@@ -1,20 +1,51 @@
 import { type Tasks } from "../models/tasks";
 import React, { useEffect, useState } from "react";
 import TaskTile from "./TaskTile";
-
-const example: Tasks = {
-    id: 2,
-    isCompleted: false,
-    description: "this is an example task im adding to test the tile look"
-}
+import {
+  completeTask,
+  createTask,
+  deleteTask,
+  fetchTasks,
+} from "../services/taskService";
 
 export default function TodoContainer() {
-  const [tasks, setTasks] = useState<Tasks[]>([example]);
+  const [tasks, setTasks] = useState<Tasks[]>([]);
   const [input, setInput] = useState<string>("");
 
+  useEffect(() => {
+    const onMount = async () => {
+      const data = await fetchTasks();
+      setTasks(data);
+    };
+
+    onMount();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
+  };
+
+  const updateTask = async (id: number, isCompleted: boolean) => {
+    await completeTask(id, isCompleted);
+
+    const data = await fetchTasks();
+    setTasks(data);
+  };
+
+  const removeTask = async (id: number) => {
+    await deleteTask(id);
+
+    const data = await fetchTasks();
+    setTasks(data);
+  };
+
+  const create = async (description: string) => {
+    await createTask(description);
+
+    const data = await fetchTasks();
+    setTasks(data);
+
+    setInput("");
   };
 
   return (
@@ -22,6 +53,7 @@ export default function TodoContainer() {
       <div className="flex justify-center py-8">
         <button
           className="px-4 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          onClick={() => create(input)}
         >
           Create Task
         </button>
@@ -40,6 +72,8 @@ export default function TodoContainer() {
           <TaskTile
             task={task}
             key={task.id}
+            updateTask={updateTask}
+            deleteTask={removeTask}
           />
         ))}
       </div>

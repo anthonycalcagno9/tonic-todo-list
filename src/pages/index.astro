@@ -2,9 +2,13 @@
 import TaskContainer from '../components/TaskContainer';
 import TaskTile from '../components/TaskTile';
 import Layout from '../layouts/Layout.astro';
-
 ---
 
 <Layout>
-	<TaskContainer/>
+	<div class="flex items-center flex-col h-full gap-8">
+		<div class="flex justify-center items-center w-full p-6">
+			<h1 class="text-4xl font-bold">TODO LIST</h1>
+		</div>
+			<TaskContainer client:load/>
+	</div>
 </Layout>
