@@ -43,3 +43,10 @@ The application will be running with a local database and all API endpoints avai
 - In the Astro app, used **TypeScript** to implement server-side logic in a **Node.js** environment.
 - Exposed 4 API endpoints to handle **Create**, **Read**, **Update**, and **Delete** operations.
 - Included **Astro DB** as the persistence layer.
+
+## Future Improvements
+
+- Add type validation via **Zod** to API endpoints.
+- Add pagination to handle large lists of tasks.
+- Connect to a remote database.
+- npm run build will not work. Need the remote database for astro to be able to build the app.
