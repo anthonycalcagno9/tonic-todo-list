@@ -25,6 +25,8 @@ A simple todo application built with Astro, React, and Astro DB.
 
 The application will be running with a local database and all API endpoints available.
 
+<br><br>
+
 ## How I Met the Project Requirements
 
 ### Frontend
