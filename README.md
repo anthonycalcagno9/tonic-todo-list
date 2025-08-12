@@ -1,4 +1,4 @@
-# Tonic Todo List - Astro with Database
+## Tonic Todo List - Astro with Database
 
 A simple todo application built with Astro, React, and Astro DB.
 
@@ -24,3 +24,20 @@ A simple todo application built with Astro, React, and Astro DB.
    Navigate to `http://localhost:4321`
 
 The application will be running with a local database and all API endpoints available.
+
+## How I Met the Project Requirements
+
+### Frontend
+- Created an **Astro** app that uses **React** components and **TypeScript**.
+- Implemented **file-based routing** with `.ts` files under `src/pages`.
+- Implemented full **CRUD** functionality:
+  - **Create** a new task.
+  - **Read** all tasks to display them on screen (this happens automatically).
+  - **Update** a task by clicking the **Complete** button.
+  - **Delete** a task by clicking the **Delete** button.
+- Created a clean UI using **Tailwind CSS**.
+
+### Backend
+- In the Astro app, used **TypeScript** to implement server-side logic in a **Node.js** environment.
+- Exposed 4 API endpoints to handle **Create**, **Read**, **Update**, and **Delete** operations.
+- Included **Astro DB** as the persistence layer.
